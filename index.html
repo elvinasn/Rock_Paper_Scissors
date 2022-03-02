@@ -9,6 +9,7 @@
 <body>
     
     <script>
+
         function computerPlay(){
             let a = Math.floor(Math.random() * 3);
             switch (a) {
@@ -25,20 +26,20 @@
 
         function playRound(playerSelection, computerSelection){
             if(playerSelection.toLowerCase() === computerSelection.toLowerCase() )
-                return `It's a draw! Player and computer selected ${computerSelection}.`
+                return 0;
             if(computerSelection === "Rock"){
                 if(playerSelection.toLowerCase() === "paper"){
-                    return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
+                    return 1;
                 }
                 if(playerSelection.toLowerCase() === "scissors"){
-                    return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
+                    return -1;
                 }
             }
             if(computerSelection === "Paper"){
                 if(playerSelection.toLowerCase() === "scissors"){
                     return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
                 }
-                if(playerSelection.toLowerCase() === "paper"){
+                if(playerSelection.toLowerCase() === "rock"){
                     return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
                 }
             }
@@ -53,9 +54,40 @@
         }
 
         function capitalize(word){
-            word.charAt().toUpperCase();
-            return word;
+            return word.charAt(0).toUpperCase() + word.slice(1);
         }
+
+
+        function game(){
+            let playerWins = 0, computerWins = 0;
+            for(let i = 0; i < 5; i++){
+                const playerSelection = window.prompt("Enter your selection (rock, paper or scissors):");
+                const computerSelection = computerPlay();
+
+                if(playRound(playerSelection, computerSelection) === 0){
+                    console.log(`It's a draw! Player and computer selected ${computerSelection}.`);
+                }
+                else if(playRound(playerSelection, computerSelection) === 1){
+                    console.log(`You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!`);
+                    playerWins++;
+                }
+                else{
+                    console.log(`You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!`);
+                    computerWins++
+                }
+            }
+            if(computerWins === playerWins){
+                console.log(`It's a draw! Your wins: ${playerWins}, computer wins: ${computerWins}`);
+            }
+            else if(computerWins > playerWins){
+                console.log(`You lose! Player wins: ${playerWins}, computer wins: ${computerWins}`);
+            }
+            else{
+                console.log(`You win! Player wins: ${playerWins}, computer wins: ${computerWins}`);
+            }
+        }
+        
+
     </script>
 </body>
 </html>
