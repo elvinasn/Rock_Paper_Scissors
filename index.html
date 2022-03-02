@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    
+    <script>
+        function computerPlay(){
+            let a = Math.floor(Math.random() * 3);
+            switch (a) {
+                case 0:
+                    return "Rock";
+                case 1:
+                    return "Paper"
+                case 2:
+                    return "Scissors"
+                default:
+                    break;
+            }
+        }
+
+        function playRound(playerSelection, computerSelection){
+            if(playerSelection.toLowerCase() === computerSelection.toLowerCase() )
+                return `It's a draw! Player and computer selected ${computerSelection}.`
+            if(computerSelection === "Rock"){
+                if(playerSelection.toLowerCase() === "paper"){
+                    return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
+                }
+                if(playerSelection.toLowerCase() === "scissors"){
+                    return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
+                }
+            }
+            if(computerSelection === "Paper"){
+                if(playerSelection.toLowerCase() === "scissors"){
+                    return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
+                }
+                if(playerSelection.toLowerCase() === "paper"){
+                    return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
+                }
+            }
+            if(computerSelection === "Scissors"){
+                if(playerSelection.toLowerCase() === "rock"){
+                    return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
+                }
+                if(playerSelection.toLowerCase() === "paper"){
+                    return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
+                }
+            }
+        }
+
+        function capitalize(word){
+            word.charAt().toUpperCase();
+            return word;
+        }
+    </script>
+</body>
+</html>
