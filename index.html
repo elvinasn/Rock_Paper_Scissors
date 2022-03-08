@@ -4,90 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
-    <script>
-
-        function computerPlay(){
-            let a = Math.floor(Math.random() * 3);
-            switch (a) {
-                case 0:
-                    return "Rock";
-                case 1:
-                    return "Paper"
-                case 2:
-                    return "Scissors"
-                default:
-                    break;
-            }
-        }
-
-        function playRound(playerSelection, computerSelection){
-            if(playerSelection.toLowerCase() === computerSelection.toLowerCase() )
-                return 0;
-            if(computerSelection === "Rock"){
-                if(playerSelection.toLowerCase() === "paper"){
-                    return 1;
-                }
-                if(playerSelection.toLowerCase() === "scissors"){
-                    return -1;
-                }
-            }
-            if(computerSelection === "Paper"){
-                if(playerSelection.toLowerCase() === "scissors"){
-                    return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
-                }
-                if(playerSelection.toLowerCase() === "rock"){
-                    return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
-                }
-            }
-            if(computerSelection === "Scissors"){
-                if(playerSelection.toLowerCase() === "rock"){
-                    return `You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!` 
-                }
-                if(playerSelection.toLowerCase() === "paper"){
-                    return `You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!` 
-                }
-            }
-        }
-
-        function capitalize(word){
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        }
-
-
-        function game(){
-            let playerWins = 0, computerWins = 0;
-            for(let i = 0; i < 5; i++){
-                const playerSelection = window.prompt("Enter your selection (rock, paper or scissors):");
-                const computerSelection = computerPlay();
-
-                if(playRound(playerSelection, computerSelection) === 0){
-                    console.log(`It's a draw! Player and computer selected ${computerSelection}.`);
-                }
-                else if(playRound(playerSelection, computerSelection) === 1){
-                    console.log(`You win! ${capitalize(playerSelection.toLowerCase())} beats ${computerSelection}!`);
-                    playerWins++;
-                }
-                else{
-                    console.log(`You lose! ${capitalize(playerSelection.toLowerCase())} loses to ${computerSelection}!`);
-                    computerWins++
-                }
-            }
-            if(computerWins === playerWins){
-                console.log(`It's a draw! Your wins: ${playerWins}, computer wins: ${computerWins}`);
-            }
-            else if(computerWins > playerWins){
-                console.log(`You lose! Player wins: ${playerWins}, computer wins: ${computerWins}`);
-            }
-            else{
-                console.log(`You win! Player wins: ${playerWins}, computer wins: ${computerWins}`);
-            }
-        }
+    <div class="container">
+        <h1>Welcome to the game of Rock, Paper, Scissors!</h1>
+        <p>Select one:</p>
+        <div class = "container__buttons">
+            <button id="btn1" class="purple"><img src="images/rock.png" alt="rock"></button>
+            <button id="btn2" class="purple"><img src="images/paper.png" alt="paper"></button>
+            <button id="btn3" class="purple"><img src="images/scissors.png" alt="scissors"></button>
+            <button id="btn4" class="none green"></button>
+            <button id="btn5" class="none red"></button>
+        </div>
+        <p class="round-results"></p>
+        <p>Score:</p>
+        <p class="container__score"></p>
+        <p class="container__winner"></p>
         
-
-    </script>
+    </div>
 </body>
 </html>
