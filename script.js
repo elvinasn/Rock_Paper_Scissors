@@ -57,17 +57,27 @@ function game() {
 
     const header = document.querySelector('.container h1')
     const buttons = document.querySelectorAll('.container__buttons button');
-    const score = document.querySelector('.container__score')
-    const winner = document.querySelector('.container__winner')
+    const instruction = document.querySelector('.instruction');
+    const score = document.querySelector('.container__score');
+    const winner = document.querySelector('.container__winner');
     const gamebuttons = Array.from(buttons);
 
-    gamebuttons.pop();
     gamebuttons.pop();
 
     score.textContent = `PLAYER ${playerWins} : ${computerWins} COMPUTER`;
     gamebuttons.forEach((button) => {
         button.addEventListener('click', buttonClicked)
     })
+    buttons[3].addEventListener('click', () => {
+        playerWins = 0;
+        computerWins = 0;
+        score.textContent = `PLAYER ${playerWins} : ${computerWins} COMPUTER`;
+        winner.textContent = "";
+        header.textContent = "Welcome to the game of Rock, Paper, Scissors!";
+        toggleClasses();
+        k++;
+
+    });
 
     function buttonClicked(e) {
         if (this.id === 'btn1') {
@@ -98,30 +108,17 @@ function game() {
             else {
                 winner.textContent = "Sorry, but you lost to computer..."
             }
-            header.textContent = "Do you want to play again?";
+            header.textContent = "Press the green button to play again."
+            round.textContent = "";
 
             toggleClasses();
-
-            if(k === 0){
-                buttons[3].addEventListener('click', () => {
-                    playerWins = 0;
-                    computerWins = 0;
-                    score.textContent = `PLAYER ${playerWins} : ${computerWins} COMPUTER`;
-                    winner.textContent = "";
-                    header.textContent = "Welcome to the game of Rock, Paper, Scissors!";
-                    toggleClasses();
-                    k++;
-                    
-                });
-            }
-            round.textContent = "";
         }
 
-        function toggleClasses() {
-            buttons.forEach((button) => button.classList.toggle("none"));
-            console.log("hello");
 
-        }
+    }
+    function toggleClasses() {
+        buttons.forEach((button) => button.classList.toggle("none"));
+        instruction.classList.toggle("none");
     }
 
 }

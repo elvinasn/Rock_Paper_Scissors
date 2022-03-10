@@ -50,6 +50,7 @@ body{
     border-radius: 0.5rem;
     border: none;
     transition: .4s ease;
+    cursor: pointer;
 }
 .purple:hover{
     background-color: hsl(333, 80%, 67%);
@@ -63,15 +64,9 @@ button img{
 .green{
     background-color: green;
 }
-.red{
-    background-color: red;
-}
 .purple{
     background-color: hsl(300, 43%, 22%);
 }
 .green:hover{
     background-color: lightgreen;
-}
-.red:hover{
-    background-color: lightpink;
 }
