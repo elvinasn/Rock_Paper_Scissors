@@ -70,3 +70,30 @@ button img{
 .green:hover{
     background-color: lightgreen;
 }
+@media all and (max-width: 64rem){
+    body{
+        overflow: initial;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+    .container__buttons{
+        flex-direction: column;
+    }
+    .container{
+        max-width: 20rem;
+        text-align: center;
+    }
+    .container h1{
+        font-size: 1.25rem;
+    }
+    .container__buttons button{
+        width: 100%;
+    }
+    .container__buttons{
+        gap: 2rem;
+    }
+    .container p{
+        font-size: 1rem;
+    }
+
+}
